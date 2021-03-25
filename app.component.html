@@ -1,0 +1,43 @@
+<h1 class="cate-header">Your Transactions</h1><br><br>
+
+<div class="main">
+    <div class="right">
+        <b>Choose your type :</b> <input type="radio" value="income" [(ngModel)]="utype" onchange="incomeFunction()" >
+        <label for="income">INCOME</label>
+        <input type="radio" value="expense" [(ngModel)]="utype" onchange="expenseFunction()">
+        <label for="expense">EXPENSE</label><br><br>
+
+        <b>Enter your Description : </b><input type="text" placeholder="Description" [(ngModel)]="udesc"><br><br>
+        <b>Enter your Amount : </b><input type="number" placeholder="Amount" [(ngModel)]="uamt"><br><br>
+        <button (click)="add()">ADD</button>
+
+    </div>
+
+</div>
+<div class="left">
+
+    <table>
+        <tr>
+            <th>sno</th>
+            <th>type</th>
+            <th>description</th>
+            <th>amount</th>
+            <th>action</th>
+        </tr>
+        <tr *ngFor="let user of exincome;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{user.type}}</td>
+            <td>{{user.description}}</td>
+            <td>{{user.amount}}</td>
+            <td><button (click)="delete(i)">DELETE</button></td>
+        </tr>
+    </table>
+
+</div>
+
+<br>
+<div>
+    <h1 class="result">Your Income total : {{getTotalIncome()}}</h1>
+    <h1 class="result">Your Expense total : {{getTotalExpense()}}</h1>
+    <h1 class="result">Your Balance is : {{totalBalance}}</h1>
+</div>
